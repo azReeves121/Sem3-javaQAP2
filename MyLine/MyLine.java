@@ -1,26 +1,21 @@
 public class MyLine {
-    private MyPoint begin; // A point representing the beginning of the line
-    private MyPoint end;   // A point representing the end of the line
+    private MyPoint begin; 
+    private MyPoint end;   
 
-    // Constructor with no arguments
-    public MyLine() {
-        this.begin = new MyPoint(0, 0);  // Default begin point at (0, 0)
-        this.end = new MyPoint(1, 1);    // Default end point at (1, 1)
-    }
 
-    // Constructor with two MyPoint instances
+    
     public MyLine(MyPoint begin, MyPoint end) {
         this.begin = begin;
         this.end = end;
     }
 
-    // Constructor with coordinates (x1, y1) and (x2, y2)
+    
     public MyLine(int x1, int y1, int x2, int y2) {
         this.begin = new MyPoint(x1, y1);
         this.end = new MyPoint(x2, y2);
     }
 
-    // Getters and Setters for begin and end points
+    
     public MyPoint getBegin() {
         return begin;
     }
@@ -37,7 +32,7 @@ public class MyLine {
         this.end = end;
     }
 
-    // Getters and Setters for individual x and y of begin and end points
+
     public int getBeginX() {
         return begin.getX();
     }
@@ -78,22 +73,22 @@ public class MyLine {
         this.end.setXY(x, y);
     }
 
-    // Calculate the length of the line
     public double getLength() {
         return begin.distance(end);
     }
 
-    // Get the slope of the line
-    public double getSlope() {
-        if (end.getX() == begin.getX()) {
-            throw new ArithmeticException("Slope is undefined for vertical lines.");
-        }
-        return (double)(end.getY() - begin.getY()) / (end.getX() - begin.getX());
+    public double getGradient() {
+        int yDiff = end.getY() - begin.getY();
+        int xDiff = end.getX() - begin.getX();
+        return Math.atan2(yDiff, xDiff);     }
+
+    
+    public String toString() {
+        return "MyLine[begin=(" + begin.getX() + "," + begin.getY() + "), end=(" 
+               + end.getX() + "," + end.getY() + ")]";
     }
 
-    // String representation of the line
-    @Override
-    public String toString() {
-        return "MyLine[begin=" + begin + ", end=" + end + "]";
-    }
+
+
+    
 }
